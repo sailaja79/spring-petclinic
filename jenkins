@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('cloning code') {
+            steps {
+                git branch: 'main', url: 'https://github.com/spring-projects/spring-petclinic.git'
+            }
+        }
+        stage('creating artifacts'){
+            steps{
+                sh 'mvn package'
+            }
+        }
+        stage('downloading artifacts'){
+            steps{
+                archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
+            }
+        }
+        stage('displaying unit test results'){
+            steps{
+               junit 'target/surefire-reports/*.xml'                 
+            }
+        }
+    }
+}
