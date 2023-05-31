@@ -17,10 +17,6 @@ pipeline {
                 archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
             }
         }
-        stage('displaying unit test results'){
-            steps{
-               junit 'target/surefire-reports/*.xml'                 
-            }
-        }
+        
     }
 }
