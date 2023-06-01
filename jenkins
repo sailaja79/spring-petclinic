@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('cloning code') {
             steps {
-                git branch: 'main', url: 'https://github.com/spring-projects/spring-petclinic.git'
+                git branch: 'main', url: 'https://github.com/sailaja79/spring-petclinic.git'
             }
         }
         stage('creating artifacts'){
